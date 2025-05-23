@@ -2,43 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Millet Menu</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Menu App</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-orange-50 p-6 font-sans">
-  <div class="max-w-5xl mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-6 text-orange-700">Millet-Based Menu</h1>
-
-    <!-- Search Bar -->
-    <div class="mb-4">
-      <input type="text" placeholder="Search items..." class="w-full p-3 rounded-lg border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
-    </div>
-
-    <!-- Category Tabs -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">All</button>
-      <button class="bg-white border border-orange-400 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-100">Breakfast</button>
-      <button class="bg-white border border-orange-400 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-100">Millet Special</button>
-      <button class="bg-white border border-orange-400 text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-100">Beverages</button>
-      <!-- Add more categories as needed -->
-    </div>
-
-    <!-- Menu Items Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <!-- Sample Item Card -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-orange-200">
-        <img src="https://via.placeholder.com/300x200" alt="Dish" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="text-lg font-semibold text-orange-800">Millet Dosa</h3>
-          <p class="text-sm text-gray-600 mb-2">A healthy twist on classic dosa using ragi flour.</p>
-          <p class="text-orange-700 font-bold">₹60</p>
-        </div>
-      </div>
-
-      <!-- Repeat similar cards for other items -->
-
-    </div>
+<body>
+  <div class="auth-container">
+    <h1 style="margin-bottom: 1rem; font-size: 2rem;">🍽️ Welcome to QR Menu App</h1>
+    <p style="margin-bottom: 2rem;">Manage your digital restaurant menu with ease.</p>
+    <a href="auth.html">
+      <button class="auth-btn">Get Started</button>
+    </a>
   </div>
 </body>
 </html>
