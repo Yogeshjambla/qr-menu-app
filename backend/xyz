@@ -1,0 +1,26 @@
+rules = [
+    (["fever", "cough"], "flu"),
+    (["fever", "chestpain"], "pneumonia"),
+    (["sneezing", "runny-nose"], "cold"),
+    (["flu"], "recommend-rest"),
+    (["pneumonia"], "recommend-antibiotics")
+]
+
+           
+facts = {"fever" , "cough"}
+def fc(facts, rules):
+    inferred = set(facts)
+    changed = True
+    while changed:
+        changed = False
+        for antecedents, consequent in rules:
+            if all(a in inferred for a in antecedents) and consequent not in inferred:
+                print(f"Rule fired: {antecedents} -> {consequent}")
+                inferred.add(consequent)
+                changed = True
+    return inferred
+
+print("Initial facts:", facts)
+print("\n---- FORWARD CHAINING ----")
+inferred = fc(facts, rules)
+print("All inferred facts:", inferred)
