@@ -1,0 +1,41 @@
+rules = [
+    (["fever", "cough"], "flu"),
+    (["fever", "chestpain"], "pneumonia"),
+    (["sneezing", "runny-nose"], "cold"),
+    (["flu"], "recommend-rest"),
+    (["pneumonia"], "recommend-antibiotics")
+]
+
+facts = {"fever", "cough"}
+
+def bc(facts, rules, goal):
+    inferred = set(facts)
+    if goal in inferred:
+        print(f"{goal} is known")
+        return True
+    for antecedents, consequent in rules:
+        if consequent == goal:
+            print(f"{goal} needs {antecedents} to be proven")
+            if all(a in inferred for a in antecedents):
+                print(f"{goal} is proved by rule {antecedents} -> {consequent}")
+                inferred.add(goal)
+                return True
+            else:
+                all_proven = True
+                for antecedent in antecedents:
+                    if antecedent not in inferred:
+                        print(f"Trying to prove {antecedent} for goal {goal}")
+                        if not bc(inferred, rules, antecedent):
+                            all_proven = False
+                            break
+                if all_proven:
+                    print(f"{goal} is proved by rule {antecedents} -> {consequent}")
+                    inferred.add(goal)
+                    return True
+    print(f"Cannot prove {goal}")
+    return False
+
+print("\n---- BACKWARD CHAINING ----")
+goal = "recommend-antibiotics"
+print(f"Trying to prove goal: {goal}")
+bc(facts, rules, goal)
