@@ -1,0 +1,35 @@
+import java.io.*;
+import java.sql.*;
+
+public class jdbc1
+{
+
+	// url that points to mysql database, 'db' is database
+	// name
+	static final String url= "jdbc:mysql://localhost:3306/mysql";
+
+	public static void main(String[] args)throws Exception
+	{
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			
+			Connection conn = DriverManager.getConnection(url, "root","");
+			System.out.println("connected to database...");
+			
+			Statement stmt = conn.createStatement();
+
+			String sql ="CREATE TABLE cse32("+"sno INT(5),"+"name CHAR(20)"+")";
+			stmt.executeUpdate(sql);
+			System.out.println("created....");
+
+			// closing connection
+			conn.close();
+		}
+
+		catch (SQLException e) {
+			System.out.println(e);
+		}
+	}
+}
