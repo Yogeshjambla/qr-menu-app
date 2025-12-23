@@ -1,0 +1,59 @@
+import pandas as pd
+from pgmpy.models import DiscreteBayesianNetwork
+from pgmpy.estimators import MaximumLikelihoodEstimator
+from pgmpy.inference import VariableElimination
+import networkx as nx
+import matplotlib.pyplot as plt
+
+data = pd.DataFrame({
+    'Weather': ['Sunny', 'Sunny', 'Rainy', 'Sunny', 'Rainy', 'Rainy', 'Sunny', 'Rainy'],
+    'Temperature': ['Hot', 'Hot', 'Mild', 'Mild', 'Cold', 'Cold', 'Mild', 'Cold'],
+    'Humidity': ['High', 'High', 'High', 'Normal', 'Normal', 'Normal', 'High', 'Normal'],
+    'Play': ['No', 'No', 'Yes', 'Yes', 'Yes', 'No', 'Yes', 'No']
+})
+
+print("Dataset:")
+print(data)
+
+model = DiscreteBayesianNetwork([
+    ('Weather', 'Humidity'),
+    ('Temperature', 'Play'),
+    ('Humidity', 'Play')
+])
+
+model.fit(data, estimator=MaximumLikelihoodEstimator)
+
+print("\nConditional Probability Distributions:")
+for cpd in model.get_cpds():
+    print(cpd)
+
+
+plt.figure(figsize=(8,6))
+
+G = nx.DiGraph(list(model.edges()))
+G.add_nodes_from(model.nodes())
+
+pos = nx.spring_layout(G)
+
+nx.draw(
+    G, pos,
+    with_labels=True,
+    node_size=3000,
+    node_color='lightblue',
+    font_size=12,
+    font_weight='bold',
+    arrowsize=20
+)
+
+plt.title("Bayesian Network")
+plt.show()
+
+
+infer = VariableElimination(model)
+query = infer.query(
+    variables=['Play'],
+    evidence={'Weather': 'Sunny', 'Temperature': 'Hot'}
+)
+
+print("\nQuery Result:")
+print(query)
