@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Millet Menu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden-item {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#1E1E2F] font-sans text-white">
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 bg-[#2C2C3F] shadow">
+    <div class="text-xl font-bold text-[#FF6B00]">MilletMenu</div>
+    <div class="space-x-4">
+      <a href="#" class="hover:underline">About</a>
+      <a href="#" class="hover:underline">Cart</a>
+      <a href="#" class="hover:underline">Support</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-[#FF6B00] p-4 text-center font-semibold">
+    Deal of the Day: Get ₹20 OFF on all Millet Beverages!
+  </section>
+
+  <!-- Filter Buttons -->
+  <div class="flex justify-center gap-2 my-6 flex-wrap">
+    <button onclick="filterMenu('all')" class="bg-[#FF6B00] text-white px-4 py-2 rounded-full">All</button>
+    <button onclick="filterMenu('breakfast')" class="bg-[#2C2C3F] border border-[#FF6B00] text-[#FF6B00] px-4 py-2 rounded-full">Breakfast</button>
+    <button onclick="filterMenu('lunch')" class="bg-[#2C2C3F] border border-[#FF6B00] text-[#FF6B00] px-4 py-2 rounded-full">Lunch</button>
+    <button onclick="filterMenu('specials')" class="bg-[#2C2C3F] border border-[#FF6B00] text-[#FF6B00] px-4 py-2 rounded-full">Millet Specials</button>
+    <button onclick="filterMenu('beverages')" class="bg-[#2C2C3F] border border-[#FF6B00] text-[#FF6B00] px-4 py-2 rounded-full">Beverages</button>
+    <button onclick="filterMenu('addons')" class="bg-[#2C2C3F] border border-[#FF6B00] text-[#FF6B00] px-4 py-2 rounded-full">Add-ons</button>
+  </div>
+
+  <!-- Menu Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4" id="menu-container">
+    <!-- Sample items -->
+    <div class="menu-item breakfast bg-[#2C2C3F] rounded-xl shadow p-4">
+      <img src="https://via.placeholder.com/300x180" class="rounded-md mb-2" />
+      <h3 class="text-lg font-bold">Ragi Dosa</h3>
+      <p class="text-sm text-gray-400">Healthy dosa made with finger millet.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹60</span>
+        <span class="text-sm text-yellow-400">★ 4.5</span>
+      </div>
+    </div>
+
+    <div class="menu-item breakfast bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Millet Idli</h3>
+      <p class="text-sm text-gray-400">Soft idlis made from foxtail millet.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹50</span>
+        <span class="text-sm text-yellow-400">★ 4.2</span>
+      </div>
+    </div>
+
+    <div class="menu-item lunch bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Bajra Khichdi</h3>
+      <p class="text-sm text-gray-400">Traditional lunch with bajra grains and vegetables.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹90</span>
+        <span class="text-sm text-yellow-400">★ 4.6</span>
+      </div>
+    </div>
+
+    <div class="menu-item lunch bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Chapati-Sabzi</h3>
+      <p class="text-sm text-gray-400">Simple, homely chapati with seasonal vegetables.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹40</span>
+        <span class="text-sm text-yellow-400">★ 4.3</span>
+      </div>
+    </div>
+
+    <div class="menu-item specials bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Foxtail Biryani</h3>
+      <p class="text-sm text-gray-400">A special millet biryani made with foxtail grains.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹120</span>
+        <span class="text-sm text-yellow-400">★ 4.8</span>
+      </div>
+    </div>
+
+    <div class="menu-item beverages bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Ragi Malt</h3>
+      <p class="text-sm text-gray-400">Nutritious ragi malt drink, perfect for mornings.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹30</span>
+        <span class="text-sm text-yellow-400">★ 4.1</span>
+      </div>
+    </div>
+
+    <div class="menu-item addons bg-[#2C2C3F] rounded-xl shadow p-4">
+      <h3 class="text-lg font-bold">Sambar</h3>
+      <p class="text-sm text-gray-400">South Indian lentil stew with vegetables.</p>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-[#FF6B00] font-bold">₹20</span>
+        <span class="text-sm text-yellow-400">★ 4.4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#2C2C3F] text-center p-4 mt-10 text-sm text-gray-400 border-t border-gray-700">
+    <div class="flex justify-center gap-6">
+      <a href="#">Logo</a>
+      <a href="#">FAQ</a>
+      <a href="#">Support</a>
+      <a href="#">Settings</a>
+    </div>
+    <p class="mt-2">© 2025 MilletMenu. All rights reserved.</p>
+  </footer>
+
+  <!-- Filtering Script -->
+  <script>
+    function filterMenu(category) {
+      const items = document.querySelectorAll('.menu-item');
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.classList.remove('hidden-item');
+        } else {
+          item.classList.add('hidden-item');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
